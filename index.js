@@ -14,10 +14,21 @@ const port = process.env.PORT||3000;
 // Middleware
 
 app.use(cookieParser());
+const allowedOrigins = [process.env.ORIGIN || "https://benevolent-zabaione-4aa71d.netlify.app"];
+
+// CORS middleware
 app.use(cors({
-  origin: [process.env.ORIGIN||"https://benevolent-zabaione-4aa71d.netlify.app"],  // Change this to your frontend URL
-  methods: ['GET', 'POST'],
-  credentials: true
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      // Allow the request if no origin or it's an allowed origin
+      callback(null, true);
+    } else {
+      // Reject the request if the origin is not allowed
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'OPTIONS'],  // Make sure OPTIONS is allowed for preflight
+  credentials: true,  // Allow cookies to be sent along with requests
 }));
 app.use(express.json());
 
