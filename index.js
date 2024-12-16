@@ -14,7 +14,7 @@ const port = process.env.PORT||3000;
 // Middleware
 
 app.use(cookieParser());
-const allowedOrigins = [process.env.ORIGIN || "https://benevolent-zabaione-4aa71d.netlify.app"];
+const allowedOrigins = ["https://benevolent-zabaione-4aa71d.netlify.app"];
 
 // CORS middleware
 app.use(cors({
