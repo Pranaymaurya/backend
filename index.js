@@ -10,7 +10,7 @@ import { config, configDotenv } from 'dotenv';
 
 const app = express();
 config();
-const port = process.env.PORT;
+const port = process.env.PORT||3000;
 // Middleware
 
 app.use(cookieParser());
