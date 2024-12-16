@@ -15,7 +15,7 @@ const port = process.env.PORT||3000;
 
 app.use(cookieParser());
 app.use(cors({
-  origin: [process.env.ORIGIN],  // Change this to your frontend URL
+  origin: [process.env.ORIGIN||"https://authentication-eab6.onrender.com/"],  // Change this to your frontend URL
   methods: ['GET', 'POST'],
   credentials: true
 }));
