@@ -15,7 +15,7 @@ const port = process.env.PORT;
 
 app.use(cookieParser());
 app.use(cors({
-  origin: [process.env.ORIGIN],  // Change this to your frontend URL
+  origin: [process.env.ORIGIN||"https://benevolent-zabaione-4aa71d.netlify.app"],  // Change this to your frontend URL
   methods: ['GET', 'POST'],
   credentials: true
 }));
